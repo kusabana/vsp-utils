@@ -3,17 +3,18 @@
 #include <unordered_map>
 
 namespace source {
-  namespace {
-    std::unordered_map< std::string, void * > interface_registry;
+  std::unordered_map< std::string, void * > &interface_registry( ) {
+    static std::unordered_map< std::string, void * > interface_registry = { };
+    return interface_registry;
   }
 
   void register_interface( std::string name, void *ptr ) {
-    interface_registry.emplace( std::move( name ), ptr );
+    interface_registry( ).emplace( std::move( name ), ptr );
   }
 
   void *get_interface( const std::string &name ) {
-    auto it = interface_registry.find( name );
-    return it != interface_registry.end( ) ? it->second : nullptr;
+    auto it = interface_registry( ).find( name );
+    return it != interface_registry( ).end( ) ? it->second : nullptr;
   }
 } // namespace source
 
