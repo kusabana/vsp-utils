@@ -8,4 +8,4 @@ set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(vsp-utils STATIC src/interface.cpp src/symbol.cpp)
 target_include_directories(vsp-utils PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
+set_target_properties(vsp-utils PROPERTIES POSITION_INDEPENDENT_CODE ON)
