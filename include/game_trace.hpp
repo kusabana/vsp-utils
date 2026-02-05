@@ -20,7 +20,7 @@ namespace source {
   struct base_trace {
     float startpos[ 3 ];
     float endpos[ 3 ];
-    plane plane;
+    source::plane plane;
     float fraction;
     int contents;
     unsigned short disp_flags;
@@ -30,7 +30,7 @@ namespace source {
 
   struct game_trace : public base_trace {
     float fraction_left_solid;
-    surface surface;
+    source::surface surface;
     int hitgroup;
     short physics_bone;
     void *entity;
